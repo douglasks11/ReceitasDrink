@@ -1,0 +1,13 @@
+package br.com.drink.ReceitasDrinks;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ReceitasDrinksApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ReceitasDrinksApplication.class, args);
+	}
+
+}
