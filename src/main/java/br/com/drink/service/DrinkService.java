@@ -1,6 +1,7 @@
 package br.com.drink.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,26 @@ public class DrinkService {
 	private DrinkRepository drinkRepository;
 	
 	
-	public List<Drink> findAll(){
-		
+	public List<Drink> findAll(String ingrediente){
+		System.out.println(ingrediente);
+		if (ingrediente == null) {
 		return drinkRepository.findAll();
+		}else return drinkRepository.findByIngredientesIngrediente(ingrediente);
+	}
+	
+	public Optional<Drink> FindById(Long Id) {
+		return drinkRepository.findById(Id);
 	}
 	
 	public Drink create(DrinkDto drink) {
 		Drink drink2 = drink.toEntity();
 		return drinkRepository.save(drink2);
 	}
+
+	public void deleteById(long id) {
+		drinkRepository.deleteById(id);
+	}
+
+	
 	
 }

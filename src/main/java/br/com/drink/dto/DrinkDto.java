@@ -11,10 +11,10 @@ import br.com.drink.model.Ingredientes;
 public class DrinkDto {
 
 	private String nome;
-	private Ingredientes ingredientes;
+	private List<Ingredientes> ingredientes;
 	
 	
-	public DrinkDto(String nome, Ingredientes ingredientes) {
+	public DrinkDto(String nome, List<Ingredientes> ingredientes) {
 		this.nome = nome;
 		this.ingredientes = ingredientes;
 	}
@@ -31,7 +31,7 @@ public class DrinkDto {
 	}
 
 
-	public Ingredientes getIngredientes() {
+	public List<Ingredientes> getIngredientes() {
 		return ingredientes;
 	}
 	

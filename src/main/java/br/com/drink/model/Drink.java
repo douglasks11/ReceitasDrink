@@ -1,11 +1,13 @@
 package br.com.drink.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Drink{
@@ -13,14 +15,14 @@ public class Drink{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	@OneToOne(cascade = {CascadeType.ALL})
-	private Ingredientes ingredientes;
+	@OneToMany(cascade = {CascadeType.ALL})
+	private List<Ingredientes> ingredientes;
 	
 
 	public Drink() {
 		
 	}
-	public Drink(Long id, String nome, Ingredientes ingredientes) {
+	public Drink(Long id, String nome, List<Ingredientes> ingredientes) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -38,10 +40,10 @@ public class Drink{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Ingredientes getIngredientes() {
+	public List<Ingredientes> getIngredientes() {
 		return ingredientes;
 	}
-	public void setIngredientes(Ingredientes ingredientes) {
+	public void setIngredientes(List<Ingredientes> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
 	
