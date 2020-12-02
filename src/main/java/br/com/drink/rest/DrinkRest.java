@@ -3,9 +3,10 @@ package br.com.drink.rest;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,11 +38,11 @@ public class DrinkRest {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Drink salvarDrink(@RequestBody @Validated DrinkDto drink) {		
+	public Drink salvarDrink(@Valid @RequestBody DrinkDto drink) {		
 		return drinkService.create(drink);
 	}
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@GetMapping("/{id}")
 	public Optional<Drink> GetById(@PathVariable Long id) {
 		return drinkService.FindById(id);
 	}
