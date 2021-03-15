@@ -38,9 +38,8 @@ public class drinkServiceImpl implements drinkService {
 
     public Object deleteDrinkById(long id) {
         drinkRepository.deleteById(id);
-        Object drink = drinkRepository.findById(id);
-        if (drink == null) {
-
+        var drink = drinkRepository.findById(id);
+        if (drink.isEmpty()) {
             return DefaultMessage.builder()
                     .code("200")
                     .message("Deletado com sucesso")
