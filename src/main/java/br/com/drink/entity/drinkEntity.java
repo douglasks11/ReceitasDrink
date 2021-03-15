@@ -3,7 +3,6 @@ package br.com.drink.entity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -23,6 +22,7 @@ public class drinkEntity {
 	@NotNull @NotEmpty
 	@ApiModelProperty(notes = "NOME DO DRINK", name= "NOME", value = "CHEVET")
 	private String nome;
+
 	@OneToMany(cascade = {CascadeType.ALL})
 	@NotNull
 	private List<ingredientesEntity> ingredientes;

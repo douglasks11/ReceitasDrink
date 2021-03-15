@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,8 +74,8 @@ public class drinkController {
 	@ApiOperation(value = "Deletar Drink")
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Object deleteDrinkById(@PathVariable long id) {
-		return drinkService.deleteDrinkById(id);
+	public ResponseEntity<Object> deleteDrinkById(@PathVariable long id) {
+		return ResponseEntity.ok(drinkService.deleteDrinkById(id));
 	}
 	
 	
