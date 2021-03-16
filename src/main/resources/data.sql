@@ -22,4 +22,8 @@ insert into DRINK_INGREDIENTES(DRINK_ENTITY_ID,INGREDIENTES_ID) values (3,7);
 insert into DRINK_INGREDIENTES(DRINK_ENTITY_ID,INGREDIENTES_ID) values (3,8);
 insert into DRINK_INGREDIENTES(DRINK_ENTITY_ID,INGREDIENTES_ID) values (3,9);
 
+insert into COMBO_BOX_DOSAGEM (id, tipo) values (null, 'ML');
+insert into COMBO_BOX_DOSAGEM (id, tipo) values (null, 'DOSES');
+insert into COMBO_BOX_DOSAGEM (id, tipo) values (null, 'LITROS');
+insert into COMBO_BOX_DOSAGEM (id, tipo) values (null, 'UNIDADES');
 commit;

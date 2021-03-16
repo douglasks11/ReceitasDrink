@@ -3,9 +3,9 @@ package br.com.drink.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.drink.repository.DrinkRepository;
 import br.com.drink.service.drinkService;
 import br.com.drink.validation.DefaultMessage;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import br.com.drink.entity.drinkEntity;
 public class drinkServiceImpl implements drinkService {
 
     @Autowired
-    private br.com.drink.repository.drinkRepository drinkRepository;
+    private DrinkRepository drinkRepository;
 
 
     public List<drinkEntity> getAllDrinks() {

@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "INGREDIENTES")
+@Data
 public class ingredientesEntity {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
