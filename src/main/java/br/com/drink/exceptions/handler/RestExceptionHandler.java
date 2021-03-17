@@ -1,4 +1,4 @@
-package br.com.drink.validation;
+package br.com.drink.exceptions.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import br.com.drink.exception.NotFoundException;
+
 @RestControllerAdvice
-public class parametersValidation {
+public class RestExceptionHandler {
 
 	@Autowired
 	private MessageSource messageSource;
 	
-	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public List<ErroComum> Validation(MethodArgumentNotValidException exception) {
 		List<ErroComum> erro = new ArrayList<>();
@@ -35,5 +37,13 @@ public class parametersValidation {
 		return erro;
 		
 	}
-
+	
+	@ExceptionHandler(NotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ErroComum threatNotFoundException(NotFoundException ex) {
+		return ErroComum.builder()
+					.message(ex.getMessage())
+					.code(String.valueOf(HttpStatus.NOT_FOUND.value()))
+					.build();
+	}
 }
