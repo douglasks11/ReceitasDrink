@@ -35,8 +35,8 @@ public class DosagemEntity {
     }
 
 
-	public DosagemResponse update(DosagemRequest dosagemRequest) {
+	public DosagemEntity update(DosagemRequest dosagemRequest) {
 		this.tipo = dosagemRequest.getTipo() != null ? dosagemRequest.getTipo() : this.getTipo();
-		return toResponse();
+		return this;
 	}
 }

@@ -43,7 +43,8 @@ public class DosagemService {
 
 	public DosagemResponse update(Long id, DosagemRequest dosagemRequest) {
 		var dosagem = findEntityById(id);
-		return dosagem.update(dosagemRequest);
+		var updated = dosagemRepository.save(dosagem.update(dosagemRequest));
+		return updated.toResponse();
 	}
 
 	public void delete(Long id) {

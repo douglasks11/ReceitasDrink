@@ -58,13 +58,12 @@ public class DrinkEntity {
 					.nome(this.getNome())
 					.build();
 					
-					
 	}
 
 
-	public DrinkResponse update(DrinkRequest drinkRequest) {
+	public DrinkEntity update(DrinkRequest drinkRequest) {
 		this.nome = drinkRequest.getNome() != null ? drinkRequest.getNome() : this.getNome();
 		this.modoPreparo = drinkRequest.getModoPreparo() != null ? drinkRequest.getModoPreparo() : this.getModoPreparo();
-		return toResponse();
+		return this;
 	}
 }
