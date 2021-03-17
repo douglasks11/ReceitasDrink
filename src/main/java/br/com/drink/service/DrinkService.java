@@ -47,7 +47,8 @@ public class DrinkService {
 
     public DrinkResponse update(Long id, DrinkRequest drinkRequest) {
     	var drink = getDrinkEntityById(id);
-    	return drink.update(drinkRequest);
+    	var updated = drink.update(drinkRequest);
+    	return drinkRepository.save(updated).toResponse();
   }
 
 }
