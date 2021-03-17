@@ -5,7 +5,7 @@ import lombok.Builder;
 import java.io.Serializable;
 
 @Builder
-public class comboBoxDosagemDTO implements Serializable {
+public class ComboBoxDosagemDTO implements Serializable {
     private Long id;
     private String tipo;
 }

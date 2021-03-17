@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "COMBO_BOX_DOSAGEM")
 @Data
-public class comboBoxDosagemEntity {
+public class ComboBoxDosagemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

@@ -5,10 +5,15 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import br.com.drink.dto.IngredientesResponse;
+
 @Entity
 @Table(name = "INGREDIENTES")
 @Data
-public class ingredientesEntity {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class IngredientesEntity {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ApiModelProperty(notes = "ITEM INGREDIENTE", name= "ITEM", value = "COROTE")
@@ -18,4 +23,14 @@ public class ingredientesEntity {
 	@ApiModelProperty(notes = "TIPO DE DOSAGEM", name= "DOSAGEM", value = "ML")
 	private String dosagem;
 
+	
+	public IngredientesResponse toResponse() {
+		return IngredientesResponse.builder()
+					.id(this.getId())
+					.ingrediente(this.getIngrediente())
+					.quantidade(this.getQuantidade())
+					.dosagem(this.getDosagem())
+					.build();
+					
+	}
 }
