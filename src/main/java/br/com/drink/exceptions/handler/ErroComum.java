@@ -1,4 +1,4 @@
-package br.com.drink.validation;
+package br.com.drink.exceptions.handler;
 
 import lombok.Builder;
 import lombok.Data;

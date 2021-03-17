@@ -1,4 +1,4 @@
-package br.com.drink.validation;
+package br.com.drink.exceptions.handler;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
