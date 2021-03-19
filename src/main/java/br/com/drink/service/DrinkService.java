@@ -1,5 +1,6 @@
 package br.com.drink.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,19 +21,15 @@ public class DrinkService {
 
 
     public List<DrinkResponse> getAllDrinks() {
-        return drinkRepository.findAll()
-        			.stream()
-        			.map(drink -> drink.toResponse())
-        			.collect(Collectors.toList());
+        return drinkRepository.findAll().stream().map(DrinkResponse::new).collect(Collectors.toList());
     }
 
     public DrinkResponse getDrinkById(Long Id) {
-        return getDrinkEntityById(Id)
-        		.toResponse();
+        return new DrinkResponse(getDrinkEntityById(Id));
     }
 
     public DrinkResponse saveDrink(DrinkRequest drinkRequest) {
-        return drinkRepository.save(drinkRequest.toEntity()).toResponse();
+        return new DrinkResponse(drinkRepository.save(drinkRequest.toEntity()));
     }
 
     public void deleteDrinkById(long id) {
@@ -48,7 +45,14 @@ public class DrinkService {
     public DrinkResponse update(Long id, DrinkRequest drinkRequest) {
     	var drink = getDrinkEntityById(id);
     	var updated = drink.update(drinkRequest);
-    	return drinkRepository.save(updated).toResponse();
+    	return new DrinkResponse(drinkRepository.save(updated));
   }
+
+	public void approve(Long id) {
+		var drink = getDrinkEntityById(id);
+		drink.setAprovado(true);
+		drink.setDataAprovacao(LocalDate.now());
+		drinkRepository.save(drink);
+	}
 
 }

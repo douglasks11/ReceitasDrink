@@ -19,14 +19,11 @@ public class DosagemService {
 	private DosagemRepository dosagemRepository;
 	
 	public List<DosagemResponse> findAll() {
-		return dosagemRepository.findAll()
-					.stream()
-					.map(dosagem -> dosagem.toResponse())
-					.collect(Collectors.toList());
+		return dosagemRepository.findAll().stream().map(DosagemResponse::new).collect(Collectors.toList());
 	}
 	
 	public DosagemResponse findById(Long id) {
-		return findEntityById(id).toResponse();
+		return new DosagemResponse(findEntityById(id));
 	}
 	
 	public DosagemEntity findEntityById(Long id) {
@@ -35,16 +32,17 @@ public class DosagemService {
 	}
 
 	public DosagemResponse create(DosagemRequest dosagemRequest) {
-		return dosagemRepository.save(DosagemEntity.builder()
-										.tipo(dosagemRequest.getTipo())
-										.build())
-										.toResponse();
+		return new DosagemResponse(dosagemRepository.save(
+				DosagemEntity.builder().tipo(dosagemRequest.getTipo()).build()
+					)
+				);
+										
 	}
 
 	public DosagemResponse update(Long id, DosagemRequest dosagemRequest) {
 		var dosagem = findEntityById(id);
 		var updated = dosagemRepository.save(dosagem.update(dosagemRequest));
-		return updated.toResponse();
+		return new DosagemResponse(updated);
 	}
 
 	public void delete(Long id) {

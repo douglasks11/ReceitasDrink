@@ -2,6 +2,7 @@ package br.com.drink.dto;
 
 import java.io.Serializable;
 
+import br.com.drink.entity.IngredientesEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,4 +23,11 @@ public class IngredientesResponse implements Serializable {
 	private String ingrediente;
 	private String quantidade;
 	private String dosagem;
+	
+	public IngredientesResponse(IngredientesEntity entity) {
+		this.id = entity.getId();
+		this.ingrediente = entity.getIngrediente();
+		this.quantidade = entity.getQuantidade();
+		this.dosagem = entity.getDosagem();
+	}
 }
