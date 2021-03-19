@@ -82,5 +82,10 @@ public class DrinkController {
 		drinkService.deleteDrinkById(id);
 	}
 	
+	@PostMapping("/approve/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void approve(@PathVariable Long id) {
+		drinkService.approve(id);
+	}
 	
 }

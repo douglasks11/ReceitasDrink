@@ -1,8 +1,8 @@
 package br.com.drink.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,7 +15,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import br.com.drink.dto.DrinkRequest;
-import br.com.drink.dto.DrinkResponse;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,36 +33,30 @@ public class DrinkEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@ApiModelProperty(notes = "ID DO DRINK", name= "ID", value = "1")
 	private Long id;
-	@NotNull @NotEmpty
+	@NotNull
 	@ApiModelProperty(notes = "NOME DO DRINK", name= "NOME", value = "CHEVET")
 	private String nome;
 
 	@OneToMany(cascade = {CascadeType.ALL})
-	@NotNull
 	@Default
 	private List<IngredientesEntity> ingredientes = new ArrayList<>();
-	@NotNull @NotEmpty
+	@NotEmpty
 	@ApiModelProperty(notes = "FORMA DE PREPARO", name= "PREPARO", value = "MISTURAR TUDO")
 	private String  modoPreparo;
-
+	@Default
+	private LocalDate dataCriacao = LocalDate.now();
+	private boolean aprovado;
+	private LocalDate dataAprovacao;
 	
-	public DrinkResponse toResponse() {
-		return DrinkResponse.builder()
-					.id(this.getId())
-					.ingredientes(this.getIngredientes()
-									.stream()
-									.map(i -> i.toResponse())
-									.collect(Collectors.toList()))
-					.modoPreparo(this.getModoPreparo())
-					.nome(this.getNome())
-					.build();
-					
-	}
-
 
 	public DrinkEntity update(DrinkRequest drinkRequest) {
 		this.nome = drinkRequest.getNome() != null ? drinkRequest.getNome() : this.getNome();
 		this.modoPreparo = drinkRequest.getModoPreparo() != null ? drinkRequest.getModoPreparo() : this.getModoPreparo();
+		
+		//TODO verificar se os ingredientes que estão sendo alterados existem no banco
+		
+	/*	this.ingredientes = ! drinkRequest.getIngredientes().isEmpty() && drinkRequest.getIngredientes() != null ? 
+				drinkRequest.getIngredientes().stream().map(IngredientesRequest::toEntity).collect(Collectors.toList()) : this.getIngredientes(); */
 		return this;
 	}
 }
