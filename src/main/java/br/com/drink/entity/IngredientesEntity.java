@@ -1,11 +1,16 @@
 package br.com.drink.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
-
-import javax.persistence.*;
-
-import br.com.drink.dto.IngredientesResponse;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "INGREDIENTES")
@@ -22,15 +27,5 @@ public class IngredientesEntity {
 	private String quantidade;
 	@ApiModelProperty(notes = "TIPO DE DOSAGEM", name= "DOSAGEM", value = "ML")
 	private String dosagem;
-
 	
-	public IngredientesResponse toResponse() {
-		return IngredientesResponse.builder()
-					.id(this.getId())
-					.ingrediente(this.getIngrediente())
-					.quantidade(this.getQuantidade())
-					.dosagem(this.getDosagem())
-					.build();
-					
-	}
 }

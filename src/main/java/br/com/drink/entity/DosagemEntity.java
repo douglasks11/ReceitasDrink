@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import br.com.drink.dto.DosagemRequest;
-import br.com.drink.dto.DosagemResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,15 +24,6 @@ public class DosagemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String tipo;
-
-    
-    public DosagemResponse toResponse() {
-    	return DosagemResponse.builder()
-    				.id(this.getId())
-    				.tipo(this.getTipo())
-    				.build();
-    }
-
 
 	public DosagemEntity update(DosagemRequest dosagemRequest) {
 		this.tipo = dosagemRequest.getTipo() != null ? dosagemRequest.getTipo() : this.getTipo();
