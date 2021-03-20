@@ -1,10 +1,10 @@
 package br.com.drink.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,8 +43,8 @@ public class DrinkController {
 	})
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public List<DrinkResponse> findAll(){
-		return drinkService.getAllDrinks();
+	public Page<DrinkResponse> findAll(Pageable pageable){
+		return drinkService.getAllDrinks(pageable);
 	}
 
 	@ApiOperation(value = "Salvar um novo Drink")
