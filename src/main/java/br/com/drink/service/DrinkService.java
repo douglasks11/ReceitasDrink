@@ -1,10 +1,10 @@
 package br.com.drink.service;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.drink.dto.DrinkRequest;
@@ -20,8 +20,8 @@ public class DrinkService {
     private DrinkRepository drinkRepository;
 
 
-    public List<DrinkResponse> getAllDrinks() {
-        return drinkRepository.findAll().stream().map(DrinkResponse::new).collect(Collectors.toList());
+    public Page<DrinkResponse> getAllDrinks(Pageable pageable) {
+    	return drinkRepository.findAll(pageable).map(DrinkResponse::new);
     }
 
     public DrinkResponse getDrinkById(Long Id) {
