@@ -43,6 +43,7 @@ public class DrinkEntity {
 	@NotEmpty
 	@ApiModelProperty(notes = "FORMA DE PREPARO", name= "PREPARO", value = "MISTURAR TUDO")
 	private String  modoPreparo;
+	private int likes;
 	@Default
 	private LocalDate dataCriacao = LocalDate.now();
 	private boolean aprovado;
