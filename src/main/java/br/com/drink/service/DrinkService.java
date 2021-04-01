@@ -55,4 +55,10 @@ public class DrinkService {
 		drinkRepository.save(drink);
 	}
 
+	public void giveLike(Long id) {
+		var drink = getDrinkEntityById(id);
+		drink.setLikes(drink.getLikes() + 1);
+		drinkRepository.save(drink);
+	}
+
 }
