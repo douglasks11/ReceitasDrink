@@ -29,6 +29,7 @@ public class DrinkResponse implements Serializable {
 	private LocalDate dataCriacao;
 	private boolean aprovado;
 	private LocalDate dataAprovacao;
+	private int likes;
 	
 	public DrinkResponse (DrinkEntity entity) {
 		this.id = entity.getId();
@@ -38,5 +39,6 @@ public class DrinkResponse implements Serializable {
 		this.dataCriacao = entity.getDataCriacao();
 		this.aprovado = entity.isAprovado();
 		this.dataAprovacao = entity.getDataAprovacao();
+		this.likes = entity.getLikes();
 	}
 }

@@ -88,4 +88,9 @@ public class DrinkController {
 		drinkService.approve(id);
 	}
 	
+	@PostMapping("/give-like/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void giveLike(@PathVariable Long id) {
+		 drinkService.giveLike(id);
+	}
 }
