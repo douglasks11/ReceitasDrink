@@ -24,6 +24,7 @@ public class DrinkResponse implements Serializable {
 	
 	private Long id;
 	private List<IngredientesResponse> ingredientes;
+	private List<ImagemResponse> imagens;
 	private String nome;
 	private String modoPreparo;
 	private LocalDate dataCriacao;
@@ -34,6 +35,7 @@ public class DrinkResponse implements Serializable {
 	public DrinkResponse (DrinkEntity entity) {
 		this.id = entity.getId();
 		this.ingredientes = entity.getIngredientes().stream().map(IngredientesResponse::new).collect(Collectors.toList());
+		this.imagens = entity.getImagens().stream().map(ImagemResponse::new).collect(Collectors.toList());
 		this.nome = entity.getNome();
 		this.modoPreparo = entity.getModoPreparo();
 		this.dataCriacao = entity.getDataCriacao();
