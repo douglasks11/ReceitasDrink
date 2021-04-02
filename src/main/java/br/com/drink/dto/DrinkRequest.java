@@ -23,6 +23,7 @@ public class DrinkRequest implements Serializable {
 	
 	private String nome;
 	private List<IngredientesRequest> ingredientes;
+	private List<ImagemRequest> imagens;
 	private String modoPreparo;
 
 	public DrinkEntity toEntity() {
@@ -30,7 +31,10 @@ public class DrinkRequest implements Serializable {
 				.nome(this.getNome())
 				.modoPreparo(this.getModoPreparo())
 				.ingredientes(ingredientes.stream()
-							.map(i -> i.toEntity())
+							.map(IngredientesRequest::toEntity)
+							.collect(Collectors.toList()))
+				.imagens(imagens.stream()
+							.map(ImagemRequest::toEntity)
 							.collect(Collectors.toList()))
 				.build();
 	}

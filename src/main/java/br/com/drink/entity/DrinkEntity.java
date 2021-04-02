@@ -29,20 +29,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DrinkEntity {
+	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@ApiModelProperty(notes = "ID DO DRINK", name= "ID", value = "1")
 	private Long id;
+	
 	@NotNull
 	@ApiModelProperty(notes = "NOME DO DRINK", name= "NOME", value = "CHEVET")
 	private String nome;
-
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@Default
+	private List<ImagemEntity> imagens = new ArrayList<>();
+	
 	@OneToMany(cascade = {CascadeType.ALL})
 	@Default
 	private List<IngredientesEntity> ingredientes = new ArrayList<>();
+	
 	@NotEmpty
 	@ApiModelProperty(notes = "FORMA DE PREPARO", name= "PREPARO", value = "MISTURAR TUDO")
 	private String  modoPreparo;
+	
 	private int likes;
 	@Default
 	private LocalDate dataCriacao = LocalDate.now();
