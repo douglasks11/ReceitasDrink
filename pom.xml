@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.com.drinkEntity</groupId>
-    <artifactId>ReceitasDrinks</artifactId>
-    <version>0.1.2-SNAPSHOT</version>
-    <name>ReceitasDrinks</name>
+    <artifactId>receitas-drinks</artifactId>
+    <version>1.0.0</version>
+    <name>receitas-drinks</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
