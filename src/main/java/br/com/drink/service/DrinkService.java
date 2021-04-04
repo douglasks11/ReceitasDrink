@@ -20,7 +20,10 @@ public class DrinkService {
     private DrinkRepository drinkRepository;
 
 
-    public Page<DrinkResponse> getAllDrinks(Pageable pageable) {
+    public Page<DrinkResponse> getAllDrinks(Pageable pageable, Boolean aprovado) {
+    	
+    	if (aprovado != null) return drinkRepository.findByAprovado(aprovado, pageable).map(DrinkResponse::new);
+    	
     	return drinkRepository.findAll(pageable).map(DrinkResponse::new);
     }
 
