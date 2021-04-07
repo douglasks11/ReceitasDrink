@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.itviclab</groupId>
-	<artifactId>eureka-server</artifactId>
+	<artifactId>service-discovery</artifactId>
 	<version>1.0.0</version>
-	<name>eureka-server</name>
+	<name>service-discovery</name>
 	<description>Application Service</description>
 
 	<properties>
