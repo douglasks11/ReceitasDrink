@@ -1,4 +1,4 @@
-package br.com.itviclabs.gateway.service;
+package br.com.itviclabs.gateway.config.security;
 
 import java.util.Date;
 

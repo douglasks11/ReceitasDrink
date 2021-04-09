@@ -1,4 +1,4 @@
-package br.com.itviclabs.gateway.config;
+package br.com.itviclabs.gateway.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import br.com.itviclabs.gateway.config.security.UserDetailsServiceImplementation;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
@@ -23,7 +21,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/auth")
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/auth", "/users-management")
 		.permitAll()
 		.anyRequest()
 		.authenticated()

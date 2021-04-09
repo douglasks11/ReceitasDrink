@@ -6,6 +6,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import br.com.itviclabs.gateway.config.security.JwtService;
 import br.com.itviclabs.gateway.dto.JwtTokenResponse;
 import br.com.itviclabs.gateway.dto.UserRequest;
 import lombok.extern.log4j.Log4j2;
