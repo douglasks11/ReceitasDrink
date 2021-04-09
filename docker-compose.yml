@@ -1,1 +1,12 @@
-not ready
+version: '3'
+
+services: 
+  oracle-db:
+    image: oracleinanutshell/oracle-xe-11g:latest
+    container_name: oradb
+    ports:
+      - 1522:1521
+      - 5500:5500
+networks:
+  production-network:
+    driver: bridge
