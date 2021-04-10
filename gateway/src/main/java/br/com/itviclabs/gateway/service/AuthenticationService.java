@@ -36,6 +36,4 @@ public class AuthenticationService {
 		return jwtService.generateToken(authentication);
 		
 	}
-	
-	
 }

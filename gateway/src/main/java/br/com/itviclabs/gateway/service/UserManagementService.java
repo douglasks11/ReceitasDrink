@@ -1,12 +1,15 @@
 package br.com.itviclabs.gateway.service;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.itviclabs.gateway.dto.CreateUserRequest;
+import br.com.itviclabs.gateway.dto.UserResponse;
 import br.com.itviclabs.gateway.entity.User;
 import br.com.itviclabs.gateway.repository.RoleRepository;
 import br.com.itviclabs.gateway.repository.UserRepository;
@@ -35,6 +38,13 @@ public class UserManagementService {
 							.roles(Arrays.asList(roleRepository.findByName("USER")))
 							.build()
 							);
+	}
+
+	public List<UserResponse> findAll() {
+		return userRepository.findAll()
+					.stream()
+					.map(UserResponse::new)
+					.collect(Collectors.toList());
 	}
 
 }
