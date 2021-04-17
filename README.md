@@ -35,3 +35,11 @@ entre na pasta receitas-drinks e execute os comandos abaixo:
 `mvn clean install`
 
 `mvn spring-boot:run Dspring-boot.run.profiles=dev` (se passar o profile de `dev`, a aplicação irá carregar alguns registros de drinks default)
+
+### Exemplo de uso
+
+A aplicação é acessada via gateway que sobe na porta `5555`
+
+Para verificar as rotas disponíveis, consulte o endpoint: `http://localhost:5555/actuator/routes`
+
+Acessando a aplicação receitas-drinks via gateway: `http://localhost:5555/receitas-drinks/swagger-ui.html`
